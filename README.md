@@ -6,6 +6,8 @@ A.U.R.A. is an intelligent, affordable assistive system designed to help dementi
 
 ---
 
+### To see the Report, click the thesis.pdf
+
 ## 🛠️ Documentation Tech Stack
 
 * 📄 LaTeX
