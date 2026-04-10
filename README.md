@@ -1,10 +1,6 @@
-Here you go—clean, same content, just enhanced with relevant emojis 👇
+# 📘 MINI PROJECT REPORT: A.U.R.A.
 
----
-
-# 📘 MINI PROJECT REPORT
-
-- A.U.R.A. (AI Assistive User Reminder Application)
+**A.U.R.A. (AI Assistive User Reminder Application)**
 
 A.U.R.A. is an intelligent, affordable assistive system designed to help dementia patients manage daily life while reducing the burden on caregivers. It combines real-time face recognition and conversational AI to provide a culturally sensitive and accessible care solution.
 
