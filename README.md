@@ -1,1 +1,1 @@
-# miniReport
+# MiniProject Report
