@@ -39,9 +39,32 @@ scalable foundation for AI-driven dementia care.
 The rapid advancement of artificial intelligence, mobile computing, and speech processing technologies has opened new possibilities for building intelligent assistive systems that are affordable, accessible, and culturally appropriate. However, these technologies have largely not been brought together in a way that directly serves the dementia care context, particularly for regional language users in India.
 A.U.R.A — AI Assistive User Reminder Application — is developed in response to this gap. It is a smart, integrated system that combines real-time face recognition, a Malayalam-speaking conversational AI assistant named Orito, medication and event management, a Memory Journal, automatic distress detection, bidirectional location tracking, and caregiver alerting — all within a single mobile application built on React Native, backed by a FastAPI server and MongoDB database, and powered by a custom fine-tuned FaceNet model, Google Gemini API, and Sarvam AI's speech services.
   \section{ Problem Statement}
-  Clearly define the research problem or gap that your study addresses.
+  Cognitive Decline: Patients struggle to recognize family members and adhere to medication schedules.
+
+Language Barrier: Existing interfaces are English-only, making them inaccessible to many elderly users in Kerala.
+
+Safety Risks: Dementia-related wandering and the inability to use smartphones during emergencies lead to delayed responses.
+
+Caregiver Burden: Families lack reliable tools for remote monitoring and face high costs for commercial care platforms.
   \section{Objectives and Scope}
- Specify the goals of your research and what you aim to achieve. Outline the boundaries and focus of the research.
+ 
+  A.U.R.A aims to provide an affordable, voice-driven assistant (Orito) with the following core features:
+
+Malayalam AI: Uses Google Gemini and Sarvam AI for natural Malayalam speech-in/speech-out interactions.
+
+Recognition \& Memory: Employs a fine-tuned FaceNet model for real-time face identification and a Memory Journal to log all conversations for patient review.
+
+Safety \& Logistics: Includes automated distress detection (no buttons required), bidirectional GPS tracking, and medication/event management.
+
+Secure Access: Uses Firebase Google Sign-In to grant caregivers restricted access to safety data while keeping personal journals and face data private.
 \section{Methodology Overview}
-Briefly mention the approach or techniques used in the study.
+The system utilizes a React Native mobile app and a FastAPI backend integrated with MongoDB.
+
+AI Pipeline: Integrates Sarvam ASR/TTS and Gemini for contextual Malayalam dialogue.
+
+AURA Module: A local hardware component (Raspberry Pi/Laptop) handles real-time face recognition.
+
+Emergency Protocol: A hybrid keyword/LLM system detects distress and triggers Firebase push notifications to caregivers.
+
+Architecture: Combines open-source tools and free-tier cloud services to ensure the solution is affordable for the average Indian family.
   
