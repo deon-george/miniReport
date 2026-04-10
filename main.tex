@@ -1,0 +1,469 @@
+\documentclass[12pt,a4paper]{report}
+
+% ─── Packages ───────────────────────────────────────────────────────────────
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{graphicx}  % kept for layout; no images included
+\usepackage{emptypage}
+
+% ─── Hyperref setup ─────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black
+}
+
+% ─── Line spacing ────────────────────────────────────────────────────────────
+\onehalfspacing
+
+% ─── Chapter title formatting ────────────────────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries\centering}
+  {\chaptertitlename\ \thechapter}
+  {10pt}
+  {\Large}
+\titlespacing*{\chapter}{0pt}{30pt}{20pt}
+
+% ─── Section formatting ──────────────────────────────────────────────────────
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}
+  {1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}
+  {1em}{}
+
+% ─── Header / Footer ─────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\addtolength{\topmargin}{-2pt}
+\fancyhead[L]{\small Department of CSE}
+\fancyhead[R]{\small SJCET (Autonomous), Palai}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Plain style (chapter opening pages)
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[L]{\small Department of CSE}
+  \fancyhead[R]{\small SJCET (Autonomous), Palai}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+}
+
+% ─── TOC / LOF / LOT tweaks ──────────────────────────────────────────────────
+\renewcommand{\contentsname}{Contents}
+\setlength{\cftbeforechapskip}{4pt}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  TITLE PAGE
+% ════════════════════════════════════════════════════════════════════════════
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+
+\vspace*{0.3cm}
+% College seal placeholder (image omitted per rules)
+\vspace{1.5cm}
+
+{\LARGE\bfseries A.U.R.A -- AI\\[6pt]
+ASSISTIVE USER REMINDER\\[6pt]
+APPLICATION}
+
+\vspace{1.2cm}
+{\large\bfseries A PROJECT REPORT}
+
+\vspace{0.8cm}
+{\normalsize\itshape Submitted by}
+
+\vspace{0.6cm}
+{\large\bfseries
+CHRISTOPHER JOSHY (Reg. No. SJC23EC031)\\[4pt]
+DEON GEORGE (Reg. No. SJC23CS086)\\[4pt]
+AMAL KURIAN ROYCE (Reg. No. SJC23CS035)\\[4pt]
+MOHAMMAD BINSHID A (Reg. No. SJC23EC059)
+}
+
+\vspace{0.8cm}
+{\normalsize\itshape to}
+
+\vspace{0.6cm}
+{\large\bfseries the APJ Abdul Kalam Technological University}\\[4pt]
+{\normalsize\itshape in partial fulfillment of the requirements for the award of the degree}\\[4pt]
+{\normalsize\itshape of}
+
+\vspace{0.5cm}
+{\large\bfseries Bachelor of Technology}\\[4pt]
+{\normalsize\itshape in}\\[4pt]
+{\large\bfseries Computer Science Engineering}
+
+\vfill
+
+{\normalsize\bfseries Department of Computer Science \& Communication Engineering}\\[4pt]
+{\normalsize\bfseries St.\ Joseph's College of Engineering \& Technology (Autonomous), Palai}
+
+\end{center}
+\end{titlepage}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  FRONT MATTER  (Roman numerals)
+% ════════════════════════════════════════════════════════════════════════════
+\pagenumbering{roman}
+
+% ─── Certificate ─────────────────────────────────────────────────────────────
+\chapter*{CERTIFICATE}
+\addcontentsline{toc}{chapter}{Certificate}
+\markboth{A.U.R.A - AI ASSISTIVE USER REMINDER APPLICATION}{}
+
+\begin{center}
+{\large\bfseries St.\ Joseph's College of Engineering and Technology\\
+(Autonomous), Palai}\\[6pt]
+{\large\bfseries Department of Computer Science and\\
+Engineering}
+\end{center}
+
+\vspace{0.8cm}
+
+\noindent This is to certify that the Mini-project report entitled \textbf{A.U.R.A -- AI ASSISTIVE USER REMINDER APPLICATION} submitted by \textbf{CHRISTOPHER JOSHY (SJC23EC031), DEON GEORGE (SJC23EC028), AMAL KURIAN ROYCE (SJC23CS035), MOHAMMAD BINSHID A (SJC23EC059)}, Sixth Semester B.Tech Computer Science and Engineering students, is a bonafide record of the Mini-Project done by them, under our guidance and supervision, in partial fulfillment of the requirements for the award of the degree, B.Tech Computer Science and Engineering of APJ Abdul Kalam Technological University, Kerala.
+
+\vspace{2.5cm}
+
+\noindent
+\begin{tabular}{@{}p{0.31\textwidth}p{0.31\textwidth}p{0.31\textwidth}@{}}
+\textbf{Prof.\ Smitha Jacob} & \textbf{Ms Divya Sunny } & \textbf{Dr.\ Joby P.P} \\
+Supervisor                 & Mini Project Coordinator   & Associate Professor \& \\
+Assistant Professor        & Assistant Professor        & Head of the Department \\
+Dept.\ of CSE              & Dept.\ of CSE               & Dept.\ of CSE \\
+\end{tabular}
+
+\vfill
+\noindent\rule{\textwidth}{0.4pt}\\[2pt]
+{\small Department of CSE \hfill i \hfill SJCET (Autonomous), Palai}
+
+% ─── Acknowledgment ──────────────────────────────────────────────────────────
+\newpage
+\chapter*{Acknowledgment}
+\addcontentsline{toc}{chapter}{Acknowledgment}
+\setcounter{page}{2}
+
+We wish to record our indebtedness and thankfulness to all who helped us prepare this Mini Project Report titled \textbf{A.U.R.A -- AI ASSISTIVE USER REMINDER APPLICATION} and present it in a satisfactory way.
+
+We would like to convey our special gratitude to Dr.\ V.P.\ Devassia, Principal, SJCET, Palai, for the moral support he provided. We express our sincere thankfulness to Dr.\ Joby P.P., Head of the Department, Department of Computer Science and Engineering, for his co-operation and valuable suggestions.
+
+We are especially thankful to our guide Prof.\ Smitha Jacob, Assistant Professor, Department of Computer Science \&  Engineering, and Prof.\ Divya Sunny, Assistant Professor, Department of Computer Science \&  Engineering,  for giving us valuable suggestions and critical inputs in the preparation of this report.
+
+\vspace{1.5cm}
+\begin{flushright}
+CHRISTOPHER JOSHY\\
+DEON GEORGE\\
+AMAL KURIAN ROYCE\\
+MOHAMMAD BINSHID A
+\end{flushright}
+
+% ─── Abstract ────────────────────────────────────────────────────────────────
+\newpage
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\setcounter{page}{3}
+
+Dementia is a progressive neurological disorder that causes severe memory 
+loss, leaving patients unable to recognize familiar faces, manage medication 
+schedules, track daily routines, or respond safely during emergencies --- 
+placing an enormous burden on both patients and caregivers. Existing 
+assistive solutions remain inaccessible to most due to high cost, technical 
+complexity, and lack of regional language support.
+
+A.U.R.A (AI Assistive User Reminder Application) is an intelligent, 
+affordable assistive system developed to address these challenges. The system 
+consists of the AURA Module, a camera-equipped hardware unit currently 
+prototyped using a computer webcam, which performs real-time face detection 
+and recognition using a custom-trained deep learning model achieving above 
+99.6\% accuracy, and a React Native mobile application serving as the unified 
+interface for patients and caregivers.
+
+The application features Orito, a conversational AI assistant powered by the 
+Google Gemini API that communicates naturally in Malayalam. Orito enables 
+patients to identify approaching individuals by simply asking, query today's 
+medications and scheduled events, set reminders through natural conversation, 
+and automatically dispatch SOS alerts to registered caregivers upon detecting 
+patient distress. The backend is built using FastAPI (Python), with all data 
+--- including facial embeddings, medication records, event schedules, 
+caregiver registrations, and SOS logs --- stored in MongoDB for its flexible 
+document-oriented schema.
+
+A.U.R.A implements a dual-role authentication model. Patients undergo an 
+adaptive onboarding assessment on first login, allowing the application to 
+optimize its interface and interaction style based on their cognitive 
+condition. Caregivers are authorized exclusively via a Gmail OAuth mechanism 
+pre-registered by the patient, with portal access restricted solely to 
+medication details and incoming SOS alerts to preserve patient privacy.
+
+Built entirely on open-source frameworks and cloud AI services, A.U.R.A 
+proves that intelligent, culturally sensitive assistive technology can be 
+developed affordably. Future scope includes dedicated embedded AURA Module 
+hardware, GPS-based patient tracking, wearable fall detection, and expanded 
+multilingual support, establishing A.U.R.A as a scalable foundation for 
+AI-driven dementia care.
+
+% ─── Table of Contents ───────────────────────────────────────────────────────
+\newpage
+\tableofcontents
+
+% ─── List of Tables ──────────────────────────────────────────────────────────
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+% ─── List of Figures ─────────────────────────────────────────────────────────
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+% ════════════════════════════════════════════════════════════════════════════
+%  MAIN MATTER
+% ════════════════════════════════════════════════════════════════════════════
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Introduction}
+
+\section{Background}
+% (same content unchanged)
+
+\section{Problem Statement}
+% (same content unchanged)
+
+\section{Motivation}
+
+% ===== IMAGE SPACE =====
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{The need for automated garbage collection and hygiene management.}
+\end{figure}
+
+% (rest unchanged)
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Literature Review}
+% (UNCHANGED)
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Requirement Analysis}
+% (UNCHANGED TEXT)
+
+% ===== ALL SURVEY FIGURES UPDATED =====
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Primary User Survey Responses (Part 1)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Primary User Survey Responses (Part 2)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Secondary User Survey Responses (Part 1)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Secondary User Survey Responses (Part 2)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Tertiary User Survey Responses (Part 1)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Tertiary User Survey Responses (Part 2)}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Need-Metric Matrix}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Target Specifications}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Proposed System}
+
+\section{System Architecture and Block Diagram}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Block Diagram of GATE System}
+\end{figure}
+
+\section{System Flowchart}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{System Flowchart}
+\end{figure}
+
+\section{System Modeling}
+
+\subsection{Use Case Diagram}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Use Case Diagram}
+\end{figure}
+
+\subsection{Sequence Diagram}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Sequence Diagram}
+\end{figure}
+
+\section{Hardware Requirements}
+
+% ===== HARDWARE IMAGE SPACES =====
+
+\begin{figure}[ht]
+\centering
+\vspace{5cm}
+\caption{ESP32}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{5cm}
+\caption{Ultrasonic Sensor}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{5cm}
+\caption{Servo Motor}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{5cm}
+\caption{Motor Driver}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\vspace{5cm}
+\caption{775 Motor}
+\end{figure}
+
+\section{Schematic Diagram}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Circuit Diagram}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Software Algorithms and Logic Implementation}
+
+\vspace{0.5cm}
+
+\textbf{Pseudocode for Navigational Logic:}
+
+\vspace{0.5cm}
+
+\newsavebox{\pseudocodebox}
+\begin{lrbox}{\pseudocodebox}
+\begin{minipage}{0.9\textwidth}
+\begin{verbatim}
+Initialize ESP32, Motors, Servo, Ultrasonic Sensor
+Start Vacuum Motor
+
+LOOP:
+    distance = Read Ultrasonic Sensor
+
+    IF distance > 20 cm:
+        Move Forward
+    ELSE:
+        Stop
+        Scan Right
+        Scan Left
+
+        IF right > left:
+            Turn Right
+        ELSE:
+            Turn Left
+END LOOP
+\end{verbatim}
+\end{minipage}
+\end{lrbox}
+
+\begin{center}
+\fbox{\usebox{\pseudocodebox}}
+\end{center}
+
+\vspace{1cm}
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Results and Discussions}
+
+\begin{figure}[ht]
+\centering
+\vspace{6cm}
+\caption{Breadboard Implementation}
+\end{figure}
+
+% (rest unchanged)
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Conclusion}
+% (UNCHANGED)
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter{Future Scope}
+% (UNCHANGED)
+
+% ════════════════════════════════════════════════════════════════════════════
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+% (UNCHANGED)
+
+\end{document}
