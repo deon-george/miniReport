@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                               % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{dmathesis}
+%% uncommand the following line to print equation labels next to
+%% equation numbers. 
+\usepackage{showlabel}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{xcolor}
+%% The following is to control the format of your thesis
+\input{Frontmatter/format}
+
+%% File to be included while running latex.
+\includeonly{Chapters/chapter1,Chapters/chapter2,Chapters/chapter3,Chapters/chapter4,Chapters/chapter5,Chapters/chapter6,Chapters/chapter7,Chapters/chapter8,Backmatter/ref,Backmatter/Annexure,Frontmatter/vm,Backmatter/append}
+
+\graphicspath{{Image/}}
+
+\begin{document}
+%% Front page of thesis
+\input{Frontmatter/frontpage}
+
+%% Main text
+% set page number starts from 1
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%% To ensure the equation counter works correctly
+\eqlabon
+\eqlaboff
+
+\include{Chapters/chapter1}
+\include{Chapters/chapter2}
+\include{Chapters/chapter3}
+\include{Chapters/chapter4}
+\include{Chapters/chapter5}
+\include{Chapters/chapter6}
+\include{Chapters/chapter7}
+\include{Chapters/chapter8}
+\include{Chapters/conclusion}
+\include{Backmatter/ref}
+\include{Backmatter/Annexure}
+\include{Frontmatter/vm}
+\include{Backmatter/append}
+
+\end{document}

@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   This is frontpage.tex file needed for the dmathesis.cls file.  You   %
+%  have to  put this file in the same directory with your thesis files.  %
+%            
+% 
+%                 No Copyright for this file                             % 
+%                 Save your time and enjoy it                            % 
+%                                                                        % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%           The title page           %%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{roman}
+%\pagenumbering{arabic}
+
+\setcounter{page}{1}
+
+\fancypagestyle{plain}{%
+\fancyfoot[L]{\emph{Department of Computer Science and Engineering, SJCET Palai}} % except the center
+\fancyfoot[R]{\hfill\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+}
+\newpage
+
+\thispagestyle{empty}
+\begin{center}
+ 
+  {\large \bf MINI PROJECT REPORT}
+  
+  \vspace*{0.5cm}
+  {\large  ON}
+   
+  \vspace*{0.5cm}
+  {\Large \bf A.U.R.A.}
+   
+  {\large Submitted by\\
+ 
+   \vspace*{0.8 cm}
+   { \bf CHRISTOPHER JOSHY (SJC23CS035)\\DEON GEORGE (SJC23CS086)\\AMAL KURIAN ROYCE (SJC23CS035)\\MOHAMMAD BINSHID A(SJC23CS171)}\\[-0.6mm]
+  }
+  {\large to\\[-0.6mm] the APJ Abdul Kalam Technological University\\[-0.6mm] in partial fulfillment of the requirements for the award of the degree\\[-0.6mm] of\\[-0.6mm] Bachelor of Technology\\[-0.6mm] in\\[-0.6mm] \emph{\bf\textit{Computer Science and Engineering}}
+  \vspace*{2cm}
+  }
+  % Put your university logo here if you wish.
+   \begin{center}
+   \includegraphics{SJCET_logo.jpg}
+   \end{center}
+
+  {{\footnotesize \bf DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}\\
+          {\small \bf ST. JOSEPH'S COLLEGE OF ENGINEERING AND TECHNOLOGY, PALAI\\(AUTONOMOUS)\\APRIL :: 2025}}
+\end{center} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% The dedication page, of you have one  %%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\thispagestyle{empty}
+\begin{center}
+ {\Large\textbf{DECLARATION}}    
+\end{center}
+We undersigned hereby declare that the mini project report on ``\textbf{A.U.R.A.[AI Assistive User Reminder Application]}'' submitted for partial fulfillment of the requirements for the award of degree of Bachelor of Technology of the APJ Abdul Kalam Technological University, Kerala is a bonafide work done by under supervision of \textbf{Prof Divya Sunny}, Assistant Professor, Dept of CSE. This submission represents our ideas in our own words and where ideas and words of others have been included. We have adequately and accurately cited and referenced the original sources. We also declare that we have adhered to ethics of academic honesty and integrity and have not misrepresented or fabricated any data or idea or fact or source in our submission. We understand that any violation of the above will be a course for disciplinary action by the institute and/or the University and can also evoke panel action from the sources which have thus not been properly cited or from whom proper permission has not been obtained. This report has not been previously formed the basis for the award of any degree, diploma or similar title of any other University.
+
+\vspace{1cm}
+
+\textbf{Name and Signature of Student}
+
+\vspace{0.3cm}
+
+\textbf{CHRISTOPHER JOSHY (SJC23CS035)} \\
+\textbf{DEON GEORGE (SJC23CS086)} \\
+\textbf{AMAL KURIAN ROYCE (SJC23CS035)} \\
+\textbf{MOHAMMED BINSHID A (SJC23CS171)}
+
+\vspace{1cm}
+
+Place : Choondacherry \\
+Date : 13-04-2026
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+
+{ \textbf{ST. JOSEPH’S COLLEGE OF ENGINEERING AND TECHNOLOGY, PALAI\\(AUTONOMOUS)} 
+
+\vspace{8 pt}
+\includegraphics[scale=.99] {SJCET.jpg} }\\
+\vspace{8 pt}
+{ \text{\textbf{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}}}\\
+\vspace{8 pt}
+\large { \textbf {CERTIFICATE}}
+\vspace{8 pt}
+\end{center}
+
+This is to certify that the report entitled ``\textbf{A.U.R.A. [AI Assistive User Reminder Application]}'' submitted by \textbf{CHRISTOPHER JOSHY (UNIVTY REG NO)}, \textbf{DEON GEORGE (SJC23CS086)}, \textbf{AMAL KURIAN ROYCE (SJC23CS035)}, \textbf{MOHAMMAD BINSHID A (UNIVTY REG NO)} to the APJ Abdul Kalam Technological University in partial fulfillment of the requirements for the award of the Degree of Bachelor of Technology in Computer Science and Engineering is a bonafide record of the mini project work carried out by them under my guidance and supervision.
+\vspace{8 pt}
+%\begin{center}
+\begin{center}
+\begin{tabular}{ll}
+{\textbf{} \hspace{80pt}} & {\textbf{}}\\
+{\textbf {Mini Project Guide} \hspace{100pt}} & {\textbf {Mini Project Coordinator}}\\
+ {{Prof.Divya Sunny}\hspace{100pt}} &  {{Prof. Smitha Jacob}}\\
+ {{Assistant Professor   }\hspace{100pt}} &  {Assistant Professor }\\
+ {{Department of CSE}\hspace{100pt}} &  {{Department of CSE}}\\[20pt]
+{} \hspace{100pt} & {\textbf {}}\\
+{ \hspace{100pt}} & {\textbf {Head of the Department}}\\
+{{}\hspace{100pt}} &  {{Dr. Joby P P }}\\
+{{Place : Choondacherry}\hspace{100pt}} &  {{Professor\textit{\&} Head}}\\
+{{Date : 04-04-2025} \hspace{100pt}} &  {{Department of CSE}}\\
+\end{tabular}
+
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+
+\begin{center} 
+\begin{LARGE}
+\vspace{10cm}
+{\textbf{ACKNOWLEDGEMENT}}
+\addcontentsline{toc}{chapter}{\numberline{}Acknowledgement}
+\end{LARGE}
+\end{center}
+
+The success and final outcome of this mini project required a lot of guidance and assistance from many people and we are extremely privileged to have got this all along the completion of this project. All that we have done are only due to such supervision and assistance and we would not forget to thank them.
+
+We respect and thank the management of \textbf{St. Joseph's College of Engineering and Technology} for providing us an opportunity and platform for doing the project work.
+
+We are extremely thankful to our beloved \textbf{Principal, Dr. V.P Devassia} for providing such nice support and facilities to carry out this project.
+
+We are extremely indebted to \textbf{Dr. Joby P.P, Professor {\&} Head}, Department of Computer Science and Engineering for his valuable suggestions and encouragement during the course of this project work.
+
+We would like to express our gratitude to our project coordinator \textbf{Prof. Smitha Jacob}, Assistant Professor, Department of Computer Science and Engineering for his valuable suggestions and guidelines throughout the period of this project work. His contributions and technical support in preparing this report are greatly acknowledged.
+
+We owe our deep gratitude to our project guide \textbf{Prof. Divya Sunny}, Assistant Professor, Department of Computer Science and Engineering who took keen interest in this project and guided us all along, till the completion of this project work by providing all the necessary information for developing a good system.
+
+We are thankful and fortunate enough to get constant encouragement, support and guidance from all the staff members of the department of Computer Science and Engineering, which helped us in successfully completing our mini project work.
+
+\vspace{7 pt}
+%\begin{center}
+\begin{center}
+\begin{tabular}{ll}
+{\textbf{} \hspace{250pt}} & {\textbf{CHRISTOPHER JOSHY}}\\
+{ \hspace{250pt}} & {\textbf{DEON GEORGE }}\\
+ {\hspace{250pt}} &  {\textbf{AMAL KURIAN ROYCE}}\\
+ {\hspace{250pt}} &  {\textbf{MOHAMMED BINSHID A}}\\
+
+
+\end{tabular}
+
+\end{center}
+ 
+%\thispagestyle{empty}
+%\end{spacing}
+
+\end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%           The abstract page         %%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%    tableofcontents, listoffigures and listoftables       %%%%%%%%%
+%%%%%%%%        Command if you do not have  them                  %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\tableofcontents
+
+\listoffigures
+\addcontentsline{toc}{chapter}{\numberline{}List of Figures}
+
+%\listoftables
+%\addcontentsline{toc}{chapter}{\numberline{}List of Tables}
+\clearpage
+\renewcommand{\nomname}{Abbreviations}
+\chapter*{Abbreviations}
+\markboth{Custom Header}{Abbreviations}
+\addcontentsline{toc}{chapter}
+{\numberline{}Abbreviations}
+\vspace{20pt}
+\begin{tabular}{l l l}
+\\ some samples \\
+A.U.R.A. & - & AI Assistive User Remainder App \\
+API & - & Application Programming Interface \\
+
+ 
+\end{tabular}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%   END OF FRONT PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+

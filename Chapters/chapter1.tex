@@ -1,0 +1,47 @@
+
+\chapter*{\centering Abstract}
+\markboth{Custom Header}{Abstract}
+\addcontentsline{toc}{chapter}{\numberline{}Abstract}%
+
+Dementia is a progressive neurological disorder that causes severe memory loss, leaving
+patients unable to recognize familiar faces, manage medication schedules, track daily
+routines, or respond safely during emergencies — placing an enormous burden on both
+patients and caregivers. Existing assistive solutions remain inaccessible to most due to high
+cost, technical complexity, and lack of regional language support.
+A.U.R.A (AI Assistive User Reminder Application) is an intelligent, affordable assistive
+system developed to address these challenges. The system consists of the AURA Module,
+a camera-equipped hardware unit currently prototyped using a computer webcam, which
+performs real-time face detection and recognition using a custom-trained deep learning
+model achieving above 99.6% accuracy, and a React Native mobile application serving as
+the unified interface for patients and caregivers.
+The application features Orito, a conversational AI assistant powered by the Google Gemini
+API that communicates naturally in Malayalam. Orito enables patients to identify approach-
+ing individuals by simply asking, query today’s medications and scheduled events, set
+reminders through natural conversation, and automatically dispatch SOS alerts to registered
+caregivers upon detecting patient distress. The backend is built using FastAPI (Python),
+with all data — including facial embeddings, medication records, event schedules, care-
+giver registrations, and SOS logs — stored in MongoDB for its flexible document-oriented
+schema.
+A.U.R.A implements a dual-role authentication model. Patients undergo an adaptive on-
+boarding assessment on first login, allowing the application to optimize its interface and
+interaction style based on their cognitive condition. Caregivers are authorized exclusively
+via a Gmail OAuth mechanism pre-registered by the patient, with portal access restricted
+solely to medication details and incoming SOS alerts to preserve patient privacy.
+Built entirely on open-source frameworks and cloud AI services, A.U.R.A proves that
+intelligent, culturally sensitive assistive technology can be developed affordably. Future
+scope includes dedicated embedded AURA Module hardware, GPS-based patient tracking,
+wearable fall detection, and expanded multilingual support, establishing A.U.R.A as a
+scalable foundation for AI-driven dementia care.
+
+ \setcounter{equation}{0}
+\chapter{Introduction}
+ Dementia is one of the most challenging neurodegenerative conditions affecting millions of elderly individuals worldwide. It progressively deteriorates memory, cognitive function, and the ability to perform routine daily tasks. Among those affected, patients in regional communities face an even greater challenge — most available assistive technologies are designed for English-speaking, technically literate users, leaving a significant gap for people who communicate in regional languages such as Malayalam. Families caring for dementia patients in Kerala are forced to maintain near-constant physical presence, as existing solutions fail to address the full spectrum of daily needs these patients face.
+The rapid advancement of artificial intelligence, mobile computing, and speech processing technologies has opened new possibilities for building intelligent assistive systems that are affordable, accessible, and culturally appropriate. However, these technologies have largely not been brought together in a way that directly serves the dementia care context, particularly for regional language users in India.
+A.U.R.A — AI Assistive User Reminder Application — is developed in response to this gap. It is a smart, integrated system that combines real-time face recognition, a Malayalam-speaking conversational AI assistant named Orito, medication and event management, a Memory Journal, automatic distress detection, bidirectional location tracking, and caregiver alerting — all within a single mobile application built on React Native, backed by a FastAPI server and MongoDB database, and powered by a custom fine-tuned FaceNet model, Google Gemini API, and Sarvam AI's speech services.
+  \section{ Problem Statement}
+  Clearly define the research problem or gap that your study addresses.
+  \section{Objectives and Scope}
+ Specify the goals of your research and what you aim to achieve. Outline the boundaries and focus of the research.
+\section{Methodology Overview}
+Briefly mention the approach or techniques used in the study.
+  
