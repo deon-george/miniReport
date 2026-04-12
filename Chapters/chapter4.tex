@@ -42,6 +42,17 @@ The sequence diagram illustrates how all components of A.U.R.A interact across i
     \includegraphics[width=15cm]{ER.png}
     \caption{ER diagram}
 \end{figure}
+\newpage
+The ER diagram represents the database structure of the A.U.R.A system, built around the central \textbf{Patient} entity.
+
+The \textbf{Patient} (with attributes: name, email) is the core entity connected to most parts of the system. A patient \textbf{Generates} interaction logs through the \textbf{Interaction Log} entity, which records conversation content, timestamp, and LLM ID. The patient also \textbf{Takes} medications managed through the \textbf{Medication} entity, which holds details like name, dosage, and frequency. Medication schedules are further linked to a \textbf{Reminder} entity that tracks the time, status, and reminder ID via a \textbf{Scheduled For} relationship.
+
+The patient is \textbf{Assigned To} a \textbf{Device} (with attributes: type and battery level), which is the local AURA hardware module. A \textbf{Caregiver} (with attributes: name and phone) \textbf{Monitors} the patient and is \textbf{Notified} during emergencies through the \textbf{SOS Alert} entity, which captures the GPS location, timestamp, trigger type, and SOS ID. The patient \textbf{Triggers} these SOS alerts directly.
+
+The \textbf{Admin} entity (with admin ID and role) \textbf{Audits} the SOS alerts, providing system-level oversight and control.
+
+Overall, the diagram shows how patient data, device assignment, medication management, conversation history, emergency alerts, and role-based access are all interconnected within A.U.R.A's database.
+\newpage
 
 \section{Use Case Diagram}
 
