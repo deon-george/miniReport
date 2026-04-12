@@ -2,7 +2,17 @@
 
 The system was executed on Windows using react expo, uvicorn, FastAPI, MongoDB, and AURA module .
 
-The input data, algorithm implementation, and execution process are illustrated in the following screenshots.
+\section{Input Data}
+
+A.U.R.A receives multiple types of input data depending on the feature being used. For face recognition, the input is live camera frames captured by the AURA Module. For voice interaction, the input is the patient's spoken Malayalam audio captured by the mobile app. For schedule and medication management, the input is structured data such as drug names, dosages, times, and event details entered by the patient or family member. For location tracking, the input is real-time GPS coordinates from both the patient's and caregiver's devices.
+
+\section{Algorithm Implementation}
+
+A.U.R.A uses five core algorithms working together. FaceNet, a deep metric learning model, converts detected faces into 128-dimensional embedding vectors and matches them against stored embeddings in MongoDB using Euclidean distance or cosine similarity. Sarvam ASR, a Transformer-based sequence-to-sequence model, converts the patient's Malayalam speech into text. Google Gemini, a large Transformer-based language model, processes the transcribed text along with the patient's full context to generate a Malayalam response and simultaneously performs semantic distress detection. Sarvam Bulbul, a neural TTS model, converts Gemini's text response back into natural Malayalam speech. Finally, a hybrid distress detection system combining keyword matching and Gemini's semantic understanding identifies genuine emergencies and triggers SOS alerts.
+
+\section{Execution Process}
+
+The execution begins when the patient speaks to Orito. The audio is sent to Sarvam ASR for transcription. The backend then fetches the patient's context from MongoDB — medicines, events, routines, and the latest face recognition result — and sends everything to Gemini. Gemini generates a response and checks for distress. If distress is detected, SOS alerts are dispatched to caregivers via Firebase. The text response is passed to Sarvam Bulbul, converted to audio, and played back to the patient. The entire conversation is saved to MongoDB as a Memory Journal entry. For face recognition, the AURA Module processes frames locally, generates embeddings, matches them against MongoDB, and sends only the final result to the backend — keeping the process fast and efficient.
 
 \chapter{Experimental Results}
 Included the App screenshots for patient, caregiver, and admin. 
