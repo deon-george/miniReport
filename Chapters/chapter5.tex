@@ -1,14 +1,50 @@
 \chapter{System Implementation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%  NEW SECTION   %%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- 
 \section{Modules}
-Body
-\subsection{Subheading 1}
+A.U.R.A is implemented as a set of tightly integrated modules, each responsible for a specific function within the system. The mobile application, AURA Module, and FastAPI backend server work together through well-defined interfaces. Each module was developed independently and connected through the central backend, which acts as the coordination layer for all system operations. The following sections describe each module, its internal logic, and its role in the overall system.
 
-Body 
-\subsection{Subheading 2}
-Body
+\subsection{Face Recognition Module}
+The face recognition module is responsible for identifying people who approach the dementia patient and communicating that information to the patient through Orito. This module runs entirely on the AURA Module --- currently implemented as a laptop with a webcam, and planned as a Raspberry Pi device in the production version.
 
+When the AURA Module is powered on and connected to the patient's mobile app, OpenCV begins reading frames from the camera continuously. For each frame, OpenCV detects whether a human face is present and, if so, crops the face region out of the frame. This cropped image is then preprocessed --- resized and normalized --- to match the input format expected by the FaceNet model.
+
+The preprocessed face is passed through a custom fine-tuned version of FaceNet, which is a deep neural network based on the principle of deep metric learning. Rather than classifying faces into fixed categories, FaceNet converts any face into a high-dimensional numerical vector called an embedding. The fine-tuning was performed on a dataset representative of the local Kerala demographic to improve recognition accuracy beyond what the original western-trained model could achieve. The current model achieves above 80\% accuracy, with a target of above 95\% in future training iterations.
+
+The generated embedding is then compared against all stored face embeddings in MongoDB using Euclidean distance and cosine similarity calculations. If the closest stored embedding falls within a defined similarity threshold, the face is identified as a match and the corresponding person's name and relationship to the patient are retrieved. If no stored embedding is close enough, the person is marked as unknown. Only this final result --- the name and relationship string --- is transmitted from the AURA Module to the FastAPI backend via an HTTP request. Raw video frames are never sent over the network, keeping the system lightweight and private.
+
+Face registration is handled through the mobile app. A family member or caregiver opens the face dataset section, takes a photograph, and enters their name and their relationship to the patient. The app sends this photograph to the backend, which runs it through FaceNet to extract the embedding vector. Only this vector is stored in MongoDB alongside the name and relationship. No raw photographs are retained, which reduces storage requirements and protects the privacy of registered individuals.
+
+\subsection{Orito --- Conversational AI Assistant Module}
+Orito is the central user-facing module of the entire A.U.R.A system. It is the Malayalam-speaking conversational AI assistant that the patient interacts with for all their daily needs. Orito is powered by the Google Gemini API and operates as a complete voice-in, voice-out system using Sarvam AI services for both speech recognition and speech synthesis.
+
+When the patient speaks, the mobile app captures the audio and sends it to Sarvam ASR, a Transformer-based automatic speech recognition model specifically trained on Indian languages including Malayalam. Sarvam ASR converts the spoken Malayalam into accurate text and returns it to the app, which forwards it to the FastAPI backend as the patient's message.
+
+Upon receiving the message, the backend performs a context assembly step before calling Gemini. It queries MongoDB to retrieve the patient's complete current context: today's medication schedule, all upcoming events and appointments, daily routines, and the most recent face recognition result from the AURA Module. This full context is bundled with the patient's message and sent to the Google Gemini API.
+
+Gemini processes the combined input using a large Transformer-based language model and generates a contextually appropriate response in Malayalam. Because Gemini receives the patient's real-time context alongside every message, Orito never gives generic answers --- every response is specific to that patient's actual situation at that moment. Gemini simultaneously evaluates the message for distress signals using a hybrid approach: fast keyword matching flags potential distress words first, and Gemini's semantic understanding then validates whether the message represents a genuine emergency, reducing false positives while ensuring no real distress call is missed.
+
+If distress is detected, the backend immediately queries MongoDB for the list of all caregivers registered to that patient and dispatches SOS push notifications to their mobile app instances via Firebase Cloud Messaging, before the response is even returned to the patient.
+
+Gemini's Malayalam text response is then sent to Sarvam Bulbul, Sarvam AI's neural text-to-speech model. Bulbul synthesizes natural-sounding Malayalam speech audio from the text, which is returned to the mobile app and played back to the patient. The result is a fully natural voice conversation in Malayalam from start to finish.
+
+Every exchange --- the patient's message and Orito's response --- is automatically saved to MongoDB as a timestamped Memory Journal entry. The patient can open the Memory Journal section of the app at any time to scroll through and re-read any past conversation, which is particularly valuable for dementia patients who may forget the content of a conversation shortly after it ends.
+
+\subsection{Medication and Event Management Module}
+The medication and event management module allows the patient's medication schedule and daily events to be stored, managed, and accessed through natural voice conversation with Orito. Medications are added by entering the drug name, dosage, frequency, and scheduled time. Events such as doctor appointments, family visits, and daily routines are added with their associated date and time. Both can be added manually through the app interface or by telling Orito directly in Malayalam, in which case Gemini's Named Entity Recognition capability extracts the structured details from the natural language input and saves them to MongoDB through the backend API.
+
+Once stored, the patient can ask Orito at any time about their medicines or schedule and receive an accurate, real-time spoken response. The app also sends push notifications when a medicine time approaches or an event is about to occur, removing the need for constant reminders from family members. Caregivers can view the complete medication schedule and event list from their side of the app, allowing them to monitor adherence and upcoming appointments remotely.
+
+\subsection{SOS Alert Module}
+The SOS alert module provides two parallel mechanisms for the patient to summon help in an emergency. The first is voice-triggered: if the patient says anything to Orito that indicates distress --- such as reporting a fall, feeling severely unwell, or explicitly asking to send an SOS --- Gemini's distress detection layer identifies the emergency and the backend immediately dispatches push notifications to all registered caregivers through Firebase Cloud Messaging. The second is a manual SOS button, prominently displayed in the patient's app interface, which triggers the same alert flow instantly when pressed. This dual mechanism ensures that both patients who can speak and those who cannot are covered.
+
+When an SOS is triggered by either method, the backend retrieves the full caregiver list for that patient from MongoDB, sends Firebase push notifications to each caregiver's app instance, and logs the alert to MongoDB with a timestamp, the trigger type, the patient ID, and the list of notified caregivers. Since both patients and caregivers use the same React Native application under different login roles, the notification appears immediately on the caregiver's device.
+
+\subsection{Bidirectional Location Tracking Module}
+The location tracking module provides real-time GPS visibility in both directions simultaneously. The patient's app continuously updates their GPS coordinates to the backend, which stores them in MongoDB. The caregiver's app reads this data and displays the patient's live location, allowing the caregiver to monitor whether the patient has wandered outside a safe area and respond quickly if needed. In the reverse direction, the caregiver's GPS coordinates are also updated to the backend and displayed on the patient's app, giving the dementia patient the reassurance of knowing where their family member is at any given moment, which reduces anxiety when the caregiver is not physically present. Location data is role-restricted: each role can only see what is permitted for their view.
+
+\subsection{Authentication and Caregiver Access Module}
+Patient authentication is handled through a custom username and password system managed by the FastAPI backend. On first login, the app presents an onboarding cognitive assessment, a series of questions about the patient's current memory and cognitive condition. Based on the results, the app automatically adjusts its interface --- larger text, simplified navigation, and a gentler tone from Orito --- to match the patient's cognitive level.
+
+Caregiver authentication uses Firebase Authentication with Google Sign-In. The patient first registers the caregiver's Gmail address in the app settings, which is stored in MongoDB linked to the patient's profile. When the caregiver logs in through Google Sign-In, Firebase authenticates them and returns their verified Gmail to the backend. The backend checks MongoDB to confirm that Gmail is registered by a patient, and only then grants caregiver access. This design ensures that no unauthorised person can access any patient's data.
+
+Once logged in, caregivers have a strictly restricted view covering only four items: the medication schedule, event reminders, SOS alerts, and the patient's live location. All other data --- including the Memory Journal, Orito conversation history, face recognition records, and cognitive assessment results --- is completely inaccessible to caregivers, protecting the patient's personal privacy.
