@@ -5,56 +5,49 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{equation}{0}
 \section{Literature Referenced}
-\subsection{If the reference is a journal or conference paper}
-Template for title should be like \\ First Author Name et al. (year) - Paper or conference title
+\subsection{2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR).}
+Schroff et al. (2015) proposed FaceNet with the objective of developing an efficient face recognition system that maps faces into a compact embedding space for accurate similarity comparison. Their methodology involved training a deep CNN using triplet loss to generate 128-dimensional embeddings, with recognition performed using distance metrics such as Euclidean distance.
+The system achieved notable results, including 99.63% accuracy on the LFW dataset, along with efficient storage and the advantage of not requiring retraining when new identities are added. Its key strengths lie in its compact representation, strong generalization across varied inputs, and efficient real-time matching capability.
+However, the approach has certain limitations, including dataset bias toward western faces, sensitivity to real-world conditions such as lighting and occlusion, and high computational cost during training. Despite these gaps, FaceNet remains highly relevant to the A.U.R.A project, where it is used for face recognition with fine-tuning on local datasets. Embeddings are stored to ensure both privacy and efficient matching.
 
-The body contains Research Objective, Methodology Used,  Key Findings, Strengths \& Contributions, 6. Limitations \& Research Gaps, Relevance to your Project
+\subsection{ Baevski et al. from Facebook AI Research (FAIR) in 2020}
+Baevski et al. (2020) - wav2vec 2.0 is a framework for Self-Supervised Learning of Speech Representations. Baevski et al. (2020) aimed to improve speech recognition using self-supervised learning with minimal labeled data. Their approach combined a CNN encoder with a Transformer architecture, applying contrastive learning directly on raw audio followed by fine-tuning. The model demonstrated strong performance even when labeled data was very limited. Its key strengths include low dependency on labeled data and robust speech representation learning. However, it comes with high computational cost and requires additional adaptation for non-English languages. In the context of A.U.R.A, this work serves as the foundation for the Sarvam ASR system used for Malayalam speech recognition.
 
-Example: 
-Smith et al. (2022) - IoT-Based Smart Energy Meter for Real-Time Monitoring
-The integration of IoT in energy metering has been a growing field of research, aiming
-to enhance monitoring and efficiency in electricity consumption. Several earlier projects,
-such as the IoT DC Energy Meter and the GSM Prepaid Energy Meter, attempted to au-
-tomate energy measurement. However, traditional methods still required manual reading
-of meters, making the process time-consuming and inefficient.
-\\
-A recent study introduced an IoT-based Electricity Energy Meter using ESP32 and the
-Blynk application, providing a real-time, remote monitoring solution[1]. This approach
-automates electricity consumption tracking and offers a cost-effective and time-efficient
-alternative to traditional methods. \\ The project incorporates current and voltage sensors to measure power consumption accurately. The SCT-013 Non-Invasive AC Current Sensor
-is selected for its capability to measure AC currents up to 100A, while the ZMPT101B
-AC Voltage Sensor Module ensures precise voltage readings. The collected data is then
-transmitted to the Blynk dashboard, allowing users to monitor voltage, current, power,
-and total units consumed in real-time.
-Despite its advantages, the IoT-based system has certain limitations. The depen-
-dency on stable internet connectivity poses challenges in areas with network instability.
-Additionally, sensor calibration is crucial for ensuring accuracy, making the initial setup
-process demanding. \\
-Overall, IoT-based smart energy meters present a significant advancement in energy
-monitoring, enabling automated data collection and remote access. Future research could
-focus on enhancing data reliability in low-connectivity regions and improving sensor cal-
-ibration techniques to optimize accuracy.
+\subsection{Language Models are Few Shot Learners  by Tom B. Brown}
 
-\subsection{If the reference is a journal or conference paper2}
-The body contains Research Objective, Methodology Used,  Key Findings
-, Strengths \& Contributions, 6. Limitations \& Research Gaps, Relevance to your Project. \\ Do cite the same, for example [2] , means Using [2] in the body of a text is part of the IEEE citation style, which follows a numbered referencing system. This means that sources are cited using bracketed numbers ([1], [2], [3]), and the full reference details appear in a numbered list at the end of the document(References).
+Brown et al. (2020) set out to demonstrate that large language models are capable of performing a wide range of tasks using only minimal examples. Their work centered on GPT-3, a large-scale Transformer trained on massive text data, enabling in-context learning without task-specific retraining. The model showed strong performance across question answering, translation, and conversation tasks. Its flexibility and ability to generate contextual, dynamic responses are its primary strengths. On the downside, it involves high computational cost, is prone to hallucinations, and requires external grounding for factual accuracy. This research forms the conceptual basis for Gemini, which is used in A.U.R.A for contextual conversational AI.
+
+\subsection{ Sarvam AI Blog 2024}
+Sarvam AI (2024) developed Bulbul with the goal of generating natural and expressive speech for Indian languages. The system follows a pipeline that converts text into phonemes, then into mel-spectrograms, and finally into a waveform using neural models. The result is more natural-sounding speech with effective handling of code-mixed language. Its strengths lie in high-quality multilingual output and expressive speech generation. Limitations include high computational cost and limited training data for certain languages. In A.U.R.A, Bulbul is used to convert responses from Gemini into natural Malayalam speech.
+
+\subsection{ Sarvam AI Blog 2024}
+Sarvam AI (2024) developed Saaras with the objective of providing accurate speech-to-text conversion for Indian languages. The system uses a spectrogram-based neural network trained on Indian speech datasets, achieving high accuracy for Indian accents and code-mixed speech. It is notably robust in real-world noisy environments and supports multiple languages. Its main limitations are the need for large datasets and significant computational resources. In A.U.R.A, Saaras serves as the core ASR component responsible for converting Malayalam speech into text.
+
+\subsection{Google DeepMind 2024}
+Google DeepMind (2024) developed the Gemini API to provide advanced multilingual and multimodal AI capabilities. Built on a Transformer-based architecture with large-scale training and in-context learning, Gemini demonstrates strong reasoning, multilingual understanding, and contextual response generation. Its large context window and flexible applicability across domains are key strengths. Limitations include the requirement for internet connectivity, cost concerns at scale, and the possibility of hallucinations. Within A.U.R.A, Gemini powers the Orito module, handling conversation, reasoning, and task execution.
+
+\subsection{MongoDB Inc. 2024}
+MongoDB Inc. (2024) designed MongoDB Atlas to provide flexible and scalable storage for diverse data types. It uses a NoSQL document-based model with BSON formatting, hosted on the cloud through the Atlas platform. The system excels at handling unstructured and semi-structured data efficiently. Its flexible schema and easy scalability make it well-suited for complex applications. However, it is not ideal for highly relational data and has a limited free tier. In A.U.R.A, MongoDB Atlas is used to store face embeddings, patient data, and system records.
+
+
+
+
+
+
+
 
 \section{Existing Solutions}
+\textbf{MedaCareLLM (CareYaya, 2024) - An AI-Powered Smart Glasses System for Dementia Care and Memory Assistance}
 
-\subsection{Website- If referred a website }
+\textbf{Objective:}
+MedaCareLLM was developed by CareYaya to assist dementia patients through real-time AI-powered smart glasses, aiming to reduce caregiver burden and improve patient independence through continuous cognitive support.
 
-If its a website give title as Website Name (Year) - Title of the Webpage or Article
+\textbf{Features \& Methodology:}
+The system combines face and object recognition to help patients identify people and surroundings in real time. It provides reminders for medications and daily tasks, and actively collects interaction data to support dementia research and progress tracking. A key feature is its conversation logging capability, where live interactions are transcribed into text and stored in a database. When the patient encounters the same person again, the AI retrieves the previous conversation and presents it as a summary, helping the patient maintain continuity of memory.
 
-For Eg: Sensors India (2025) - IoT Sensors for Smart Energy Monitoring
+\textbf{Limitations:}
+The system is limited to English, making it inaccessible to non-English-speaking users. It relies on smart glasses hardware, which is costly and may pose usability challenges for elderly users. Additionally, it lacks affordability for widespread adoption in developing regions.
 
-The body should contain objective, methodology, Key Findings, Strengths, Limitations, Relevance to your Project
+\textbf{Relevance to your Project:}
+MedaCareLLM served as a direct inspiration for A.U.R.A. While the core concept of real-time face recognition, conversation logging, and memory assistance was adopted, A.U.R.A extends it further by introducing Malayalam language support, a mobile-based approach instead of smart glasses, automated distress detection, GPS tracking, and a caregiver access system --- making it more affordable, accessible, and suitable for elderly users in Kerala.
 
-
-\subsection{If refereed a mobile App or an application program }
-Title template should be like
-[App Name]([Developer],[Year]) - [Short Description of Purpose]
-
-eg: Blynk (Blynk Inc., 2023) - A Mobile IoT Dashboard for Smart Energy Monitoring
-
-Body contains Objective, Features \& Methodology, Limitations and 
- Relevance to your Project

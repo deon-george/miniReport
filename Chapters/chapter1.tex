@@ -39,32 +39,14 @@ scalable foundation for AI-driven dementia care.
 The rapid advancement of artificial intelligence, mobile computing, and speech processing technologies has opened new possibilities for building intelligent assistive systems that are affordable, accessible, and culturally appropriate. However, these technologies have largely not been brought together in a way that directly serves the dementia care context, particularly for regional language users in India.
 A.U.R.A — AI Assistive User Reminder Application — is developed in response to this gap. It is a smart, integrated system that combines real-time face recognition, a Malayalam-speaking conversational AI assistant named Orito, medication and event management, a Memory Journal, automatic distress detection, bidirectional location tracking, and caregiver alerting — all within a single mobile application built on React Native, backed by a FastAPI server and MongoDB database, and powered by a custom fine-tuned FaceNet model, Google Gemini API, and Sarvam AI's speech services.
   \section{ Problem Statement}
-  Cognitive Decline: Patients struggle to recognize family members and adhere to medication schedules.
+  Dementia patients often struggle with cognitive decline, making it difficult to recognize family members and adhere to medication schedules. This is further compounded by a significant language barrier, as most existing assistive interfaces are English-only, rendering them inaccessible to elderly users in Kerala who are more comfortable in their native language. Beyond these challenges, safety risks remain a serious concern, as dementia-related wandering and the inability to use smartphones during emergencies frequently lead to delayed responses. Adding to this, caregivers and families lack reliable tools for remote monitoring, and the high cost of commercial care platforms places an additional burden on households already managing the demands of dementia care.
+  
 
-Language Barrier: Existing interfaces are English-only, making them inaccessible to many elderly users in Kerala.
 
-Safety Risks: Dementia-related wandering and the inability to use smartphones during emergencies lead to delayed responses.
-
-Caregiver Burden: Families lack reliable tools for remote monitoring and face high costs for commercial care platforms.
   \section{Objectives and Scope}
+  A.U.R.A aims to provide an affordable, voice-driven assistant named Orito, built around four core areas. For Malayalam AI, the system leverages Google Gemini and Sarvam AI to enable fully natural speech-in and speech-out interactions in Malayalam. In terms of recognition and memory, A.U.R.A employs a fine-tuned FaceNet model for real-time face identification, alongside a Memory Journal that logs all conversations for the patient to review later. On the safety and logistics front, the system includes automated distress detection that requires no button input, bidirectional GPS tracking, and tools for managing medications and events. Finally, secure access is handled through Firebase Google Sign-In, which grants caregivers restricted access to safety-related data while keeping personal journals and face data strictly private.
  
-  A.U.R.A aims to provide an affordable, voice-driven assistant (Orito) with the following core features:
-
-Malayalam AI: Uses Google Gemini and Sarvam AI for natural Malayalam speech-in/speech-out interactions.
-
-Recognition \& Memory: Employs a fine-tuned FaceNet model for real-time face identification and a Memory Journal to log all conversations for patient review.
-
-Safety \& Logistics: Includes automated distress detection (no buttons required), bidirectional GPS tracking, and medication/event management.
-
-Secure Access: Uses Firebase Google Sign-In to grant caregivers restricted access to safety data while keeping personal journals and face data private.
+ 
 \section{Methodology Overview}
-The system utilizes a React Native mobile app and a FastAPI backend integrated with MongoDB.
-
-AI Pipeline: Integrates Sarvam ASR/TTS and Gemini for contextual Malayalam dialogue.
-
-AURA Module: A local hardware component (Raspberry Pi/Laptop) handles real-time face recognition.
-
-Emergency Protocol: A hybrid keyword/LLM system detects distress and triggers Firebase push notifications to caregivers.
-
-Architecture: Combines open-source tools and free-tier cloud services to ensure the solution is affordable for the average Indian family.
+The system utilizes a React Native mobile app and a FastAPI backend integrated with MongoDB. At the core of its AI pipeline, it integrates Sarvam ASR and TTS models with Google Gemini to provide contextual and natural dialogue in Malayalam. Complementing the software is the AURA Module, a local hardware component such as a Raspberry Pi or a laptop, which handles real-time face recognition. For critical situations, an emergency protocol featuring a hybrid keyword and LLM system reliably detects distress and instantly triggers Firebase push notifications to caregivers. Overall, this architecture intelligently combines open-source tools and free-tier cloud services to ensure the entire solution remains highly affordable and accessible for the average Indian family.
   
