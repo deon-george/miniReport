@@ -20,6 +20,19 @@
 \end{figure}
 
 \newpage
+The sequence diagram illustrates how all components of A.U.R.A interact across its key functionalities:
+\begin{itemize}
+    \item \textbf{Face Recognition:} The AURA module detects a face, sends the result to the backend, and the identified person's name is displayed to the patient.
+    \item \textbf{Voice Interaction:} The patient speaks in Malayalam, which is converted to text and sent to the backend. Gemini generates a response with a distress check, and the reply is converted back to Malayalam audio and played to the patient.
+    \item \textbf{Conversation Logging:} Every interaction is saved to MongoDB, maintaining a persistent memory journal for the patient.
+    \item \textbf{Schedule Management:} The app communicates with the backend to add or retrieve medication and event schedules stored in MongoDB.
+    \item \textbf{SOS Alert:} An emergency triggered by voice or button sends an instant alert through the backend to the caregiver.
+    \item \textbf{GPS Tracking:} The app continuously sends location data to the backend, allowing caregivers to track the patient in real time.
+    \item \textbf{Caregiver Authentication:} Firebase Google Sign-In verifies the caregiver's identity before granting restricted access to patient data.
+    \item \textbf{Bluetooth Connection:} The mobile app discovers and connects to the local AURA module via Bluetooth to initiate the entire system.
+\end{itemize}
+
+\newpage
 
 \section{ER Diagram}
 
