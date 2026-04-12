@@ -7,6 +7,55 @@
     \includegraphics[width=\textwidth]{activity.png}
     \caption{Activity diagram}
 \end{figure}
+\newpage
+\textbf{1. Application Start \& User Check} \\
+The flow begins at \textbf{START}. The system checks whether the user is an existing user. If \textbf{No}, the user is directed to \textbf{Setup Profile} to register. If the authentication \textbf{Fails}, the setup profile step is triggered again. If \textbf{Yes}, the system proceeds.
+
+\textbf{2. Role-Based Routing} \\
+After successful authentication, a \textbf{Role?} decision node routes the user to either the \textbf{Patient Dashboard} or the \textbf{Caregiver Dashboard} based on their assigned role.
+
+\textbf{3. Face Recognition (Patient Side)} \\
+Once the patient is authenticated, the camera runs \textbf{Face Recognition}. The result is evaluated based on a \textbf{Match?} confidence level:
+\begin{itemize}
+    \item \textbf{High} $\rightarrow$ The identity is announced to the patient via \textbf{TTS (Text-to-Speech)}
+    \item \textbf{Low} $\rightarrow$ The system displays a \textbf{Show New Face} prompt
+    \item \textbf{Medium} $\rightarrow$ The face is \textbf{Queued for Verification} by the caregiver
+\end{itemize}
+
+\textbf{4. Patient Dashboard} \\
+The patient has access to multiple features from the dashboard:
+\begin{itemize}
+    \item \textbf{Voice Input} $\rightarrow$ Captured and converted via \textbf{Speech-to-Text}, then the system checks the \textbf{Intent}:
+    \begin{itemize}
+        \item \textbf{AI Assistant} $\rightarrow$ Engages in conversation with Orito (Gemini + Sarvam)
+        \item \textbf{Reminders} $\rightarrow$ Opens \textbf{Manage Reminders} for medication and events
+        \item \textbf{Settings} $\rightarrow$ Opens the settings screen
+    \end{itemize}
+    \item \textbf{SOS Trigger} $\rightarrow$ The patient can trigger an SOS directly. This activates \textbf{Emergency SOS}, which simultaneously:
+    \begin{itemize}
+        \item \textbf{Notifies Caregivers} instantly
+        \item \textbf{Displays} an emergency alert on screen
+        \item If \textbf{No Response?} within a timeout $\rightarrow$ the system automatically \textbf{Calls 100} (emergency services)
+        \item If \textbf{Yes Response} $\rightarrow$ the alert is acknowledged and resolved
+    \end{itemize}
+    \item \textbf{AI Reminders} $\rightarrow$ Accessible through settings for managing scheduled reminders
+\end{itemize}
+
+\textbf{5. Caregiver Dashboard} \\
+The caregiver has a dedicated dashboard with the following capabilities:
+\begin{itemize}
+    \item \textbf{View Patient Status} $\rightarrow$ Monitor the patient's current condition
+    \item \textbf{Manage Reminders} $\rightarrow$ Add or update medication and event schedules
+    \item \textbf{Verify Faces} $\rightarrow$ Review and confirm unidentified faces queued from the patient's face recognition
+    \item \textbf{View Alerts} $\rightarrow$ Check all triggered SOS and system alerts
+    \item \textbf{Receive SOS} $\rightarrow$ Get notified instantly when the patient triggers an emergency
+    \item \textbf{Navigate to Patient} $\rightarrow$ Access GPS location to reach the patient
+    \item \textbf{Browse Memories} $\rightarrow$ View the patient's memory journal and past conversations
+    \item \textbf{Memories} $\rightarrow$ Manage stored interaction logs
+\end{itemize}
+
+\textbf{6. Logout \& End} \\
+Both the patient and caregiver flows include a \textbf{Logout?} decision. If the user chooses to logout, the session ends at the \textbf{END} node. If not, the system loops back to the respective dashboard, keeping the session active.
 
 \newpage
 
