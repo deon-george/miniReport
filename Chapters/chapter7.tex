@@ -15,7 +15,7 @@ A.U.R.A uses five core algorithms working together. FaceNet, a deep metric learn
 The execution begins when the patient speaks to Orito. The audio is sent to Sarvam ASR for transcription. The backend then fetches the patient's context from MongoDB — medicines, events, routines, and the latest face recognition result — and sends everything to Gemini. Gemini generates a response and checks for distress. If distress is detected, SOS alerts are dispatched to caregivers via Firebase. The text response is passed to Sarvam Bulbul, converted to audio, and played back to the patient. The entire conversation is saved to MongoDB as a Memory Journal entry. For face recognition, the AURA Module processes frames locally, generates embeddings, matches them against MongoDB, and sends only the final result to the backend — keeping the process fast and efficient.
 
 \chapter{Experimental Results}
-Included the App screenshots for patient, caregiver, and admin. \\ Detailedly explain about each functionaltiy of each page of the patient's App module ,caregiver's App module and admin's App module and Admin App module. 
+Included the App screenshots for patient, caregiver, and admin. \\ Detailedly explain about each functionaltiy of the pages of patient's App module ,caregiver's App module and Admin App module. 
 \newpage
 \section{Patient's Dashboard}
 
