@@ -44,8 +44,8 @@ To generate the PDF version of the mini-project report:
 
 ---
 
-Made with ❤️ by Deon George
-#Department of Computer Science and Engineering, SJCET Palai*
+Made with ❤️ by Deon George,
+* Department of Computer Science and Engineering, SJCET Palai*
 
 ---
 
