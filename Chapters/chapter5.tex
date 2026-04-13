@@ -1,4 +1,11 @@
 \chapter{System Implementation}
+\section{System Overview}
+A.U.R.A is made up of three interconnected components that work together as one system:
+\begin{enumerate}
+    \item \textbf{The AURA Module} --- a camera unit placed in the patient's environment that performs local face recognition processing and sends results to the backend. Currently demonstrated using a laptop; future versions will be dedicated standalone hardware built on Raspberry Pi.
+    \item \textbf{The Mobile Application} --- a single React Native app serving both patients and caregivers under different login roles. The patient interacts with Orito, manages medicines and events, views the Memory Journal, sees location, and can trigger SOS alerts. The caregiver receives SOS alerts, views the patient's medication schedule, event reminders, and tracks live location.
+    \item \textbf{The Backend Server} --- a FastAPI server that acts as the central brain, connecting the mobile app, the AURA Module, the MongoDB database, Google Gemini, Firebase, and Sarvam AI services together.
+\end{enumerate}
 
 \section{Modules}
 A.U.R.A is implemented as a set of tightly integrated modules, each responsible for a specific function within the system. The mobile application, AURA Module, and FastAPI backend server work together through well-defined interfaces. Each module was developed independently and connected through the central backend, which acts as the coordination layer for all system operations. The following sections describe each module, its internal logic, and its role in the overall system.
