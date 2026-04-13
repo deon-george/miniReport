@@ -7,8 +7,11 @@ The activity diagram illustrates the complete operational flow of the applicatio
     \centering
     \includegraphics[width=\textwidth]{activity.png}
     \caption{Activity diagram}
-\end{figure}
+    \label{fig:activity-diagram}
+    \end{figure}
+    
 \newpage
+From Figure \ref{fig:activity-diagram}, we can see the following:
 \textbf{1. Application Start \& User Check} \\
 The flow begins at \textbf{START}. The system checks whether the user is an existing user. If \textbf{No}, the user is directed to \textbf{Setup Profile} to register. If the authentication \textbf{Fails}, the setup profile step is triggered again. If \textbf{Yes}, the system proceeds.
 
