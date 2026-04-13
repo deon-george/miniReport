@@ -7,11 +7,12 @@ The activity diagram illustrates the complete operational flow of the applicatio
     \centering
     \includegraphics[width=\textwidth]{activity.png}
     \caption{Activity diagram}
-    \label{fig:activity-diagram}
     \end{figure}
     
 \newpage
-From Figure \ref{fig:activity-diagram}, we can see the following:
+\begin{flushleft}
+From Figure 4.1, we can get the following Inference:
+
 \textbf{1. Application Start \& User Check} \\
 The flow begins at \textbf{START}. The system checks whether the user is an existing user. If \textbf{No}, the user is directed to \textbf{Setup Profile} to register. If the authentication \textbf{Fails}, the setup profile step is triggered again. If \textbf{Yes}, the system proceeds.
 
@@ -26,7 +27,7 @@ Once the patient is authenticated, the camera runs \textbf{Face Recognition}. Th
     \item \textbf{Medium} $\rightarrow$ The face is \textbf{Queued for Verification} by the caregiver
 \end{itemize}
 
-\textbf{4. Patient Dashboard} \\
+\textbf{4. Patient Dashboard}
 The patient has access to multiple features from the dashboard:
 \begin{itemize}
     \item \textbf{Voice Input} $\rightarrow$ Captured and converted via \textbf{Speech-to-Text}, then the system checks the \textbf{Intent}:
@@ -45,7 +46,7 @@ The patient has access to multiple features from the dashboard:
     \item \textbf{AI Reminders} $\rightarrow$ Accessible through settings for managing scheduled reminders
 \end{itemize}
 
-\textbf{5. Caregiver Dashboard} \\
+\textbf{5. Caregiver Dashboard}
 The caregiver has a dedicated dashboard with the following capabilities:
 \begin{itemize}
     \item \textbf{View Patient Status} $\rightarrow$ Monitor the patient's current condition
@@ -58,8 +59,9 @@ The caregiver has a dedicated dashboard with the following capabilities:
     \item \textbf{Memories} $\rightarrow$ Manage stored interaction logs
 \end{itemize}
 
-\textbf{6. Logout \& End} \\
+\textbf{6. Logout \& End}
 Both the patient and caregiver flows include a \textbf{Logout?} decision. If the user chooses to logout, the session ends at the \textbf{END} node. If not, the system loops back to the respective dashboard, keeping the session active.
+\end{flushleft}
 
 \newpage
 \section{Sequence Diagram}
@@ -72,7 +74,8 @@ Both the patient and caregiver flows include a \textbf{Logout?} decision. If the
 \end{figure}
 
 \newpage
-The sequence diagram illustrates how all components of A.U.R.A interact across its key functionalities:
+\begin{flushleft}
+The Figure 4.2 illustrates how all components of A.U.R.A interact across its key functionalities:
 \begin{itemize}
     \item \textbf{Face Recognition:} The AURA module detects a face, sends the result to the backend, and the identified person's name is displayed to the patient.
     \item \textbf{Voice Interaction:} The patient speaks in Malayalam, which is converted to text and sent to the backend. Gemini generates a response with a distress check, and the reply is converted back to Malayalam audio and played to the patient.
@@ -83,6 +86,7 @@ The sequence diagram illustrates how all components of A.U.R.A interact across i
     \item \textbf{Caregiver Authentication:} Firebase Google Sign-In verifies the caregiver's identity before granting restricted access to patient data.
     \item \textbf{Bluetooth Connection:} The mobile app discovers and connects to the local AURA module via Bluetooth to initiate the entire system.
 \end{itemize}
+\end{flushleft}
 
 \newpage
 
@@ -95,7 +99,8 @@ The sequence diagram illustrates how all components of A.U.R.A interact across i
     \caption{ER diagram}
 \end{figure}
 \newpage
-The ER diagram represents the database structure of the A.U.R.A system, built around the central \textbf{Patient} entity.
+\begin{flushleft}
+The Figure 4.3 represents the database structure of the A.U.R.A system, built around the central \textbf{Patient} entity.
 
 The \textbf{Patient} (with attributes: name, email) is the core entity connected to most parts of the system. A patient \textbf{Generates} interaction logs through the \textbf{Interaction Log} entity, which records conversation content, timestamp, and LLM ID. The patient also \textbf{Takes} medications managed through the \textbf{Medication} entity, which holds details like name, dosage, and frequency. Medication schedules are further linked to a \textbf{Reminder} entity that tracks the time, status, and reminder ID via a \textbf{Scheduled For} relationship.
 
@@ -104,6 +109,7 @@ The patient is \textbf{Assigned To} a \textbf{Device} (with attributes: type and
 The \textbf{Admin} entity (with admin ID and role) \textbf{Audits} the SOS alerts, providing system-level oversight and control.
 
 Overall, the diagram shows how patient data, device assignment, medication management, conversation history, emergency alerts, and role-based access are all interconnected within A.U.R.A's database.
+\end{flushleft}
 \newpage
 
 \section{Use Case Diagram}
@@ -115,7 +121,8 @@ Overall, the diagram shows how patient data, device assignment, medication manag
     \caption{Use case diagram}
 \end{figure}
 \newpage
-The use case diagram represents the interactions between three actors --- \textbf{Patient}, \textbf{Caregiver}, and \textbf{Admin} --- within the A.U.R.A system.
+\begin{flushleft}
+The Figure 4.4 represents the interactions between three actors --- \textbf{Patient}, \textbf{Caregiver}, and \textbf{Admin} --- within the A.U.R.A system.
 
 The \textbf{Patient} has the most interactions, including logging in, using the voice assistant, adding event schedules, receiving event and medication reminders, confirming medication intake, saving memories, viewing the memory journal, and triggering an SOS in emergencies.
 
@@ -124,3 +131,4 @@ The \textbf{Caregiver} has restricted access focused on patient safety and healt
 The \textbf{Admin} is connected to the Login use case, indicating a role-based access control where the admin manages system-level access separately from the patient and caregiver.
 
 Overall, the diagram shows how A.U.R.A serves different users with role-specific features, keeping patient-facing functions separate from caregiver and admin controls.
+\end{flushleft}
