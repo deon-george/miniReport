@@ -38,4 +38,41 @@ All test cases passed, confirming A.U.R.A is stable and reliable for real-world 
 
 \chapter{Experimental Results}
 This chapter presents the experimental results of the A.U.R.A. system through a series of screenshots from the patient, caregiver, and administrator application modules. It provides a detailed explanation of the functionalities within each interface, illustrating how the system facilitates interaction, monitoring, and management for all user roles.
+
+\section{Face Recognition Performance}
+The custom fine-tuned FaceNet model currently achieves an accuracy of over 80\%. This performance is attributed to fine-tuning the model on a dataset representative of the Kerala demographic, which improves results compared to standard western-trained models. The development goal is to reach an accuracy exceeding 95\% in future iterations.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture2.png}
+    \caption[Face Recognition]{Face Recognition \\ A preview of the footage taken by the camera module is shown.}
+\end{figure}
+
+\section{Distress Detection Reliability}
+The system utilizes a hybrid distress detection method that combines fast keyword matching with Gemini’s semantic understanding. This ensures that genuine emergencies are confirmed accurately before triggering the SOS protocol. Results show that the backend can successfully dispatch Firebase push notifications to caregivers immediately upon confirmation.
+
+\section{Multimodal Integration Success}
+Experimental workflows confirmed the successful integration of the AURA Module (laptop/Raspberry Pi) and the FastAPI backend. Key results include:
+
+\begin{itemize}
+    \item \textbf{Data Privacy}: Only identification strings (name and relationship) are transmitted over the network; raw video and photos are never stored or transmitted.
+    \item \textbf{Speech Pipeline}: The system successfully completes a "voice-in, voice-out" loop using Sarvam ASR for transcription and Sarvam Bulbul for natural Malayalam synthesis.
+    \item \textbf{Contextual Accuracy}: Google Gemini proved capable of generating responses that incorporate real-time patient data, such as medication schedules and recent face recognition results, into a coherent Malayalam conversation.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture8.png}
+    \caption{Orito --- Conversational AI Assistant Module \\ By tapping the microphone icon, Orito bot starts listens for user input}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture9.png}
+    \caption{Orito --- Conversational AI Assistant Module \\ After taking the input from the user, Orito bot processes it and gives a response}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture10.png}
+    \caption{Orito --- Conversational AI Assistant Module  \\ The Orito bot after looking through the Memory Bank and the calendar gives a response}
+\end{figure}
 \newpage
