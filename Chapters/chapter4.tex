@@ -5,7 +5,7 @@ The activity diagram illustrates the complete operational flow of the applicatio
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{activity.png}
+    \includegraphics[width=\textwidth, angle = 270]{activity.png}
     \caption{Activity diagram}
     \end{figure}
     
@@ -111,11 +111,12 @@ The \textbf{Admin} is connected to the Login use case, indicating a role-based a
 Overall, the diagram shows how A.U.R.A serves different users with role-specific features, keeping patient-facing functions separate from caregiver and admin controls.
 \end{flushleft}
 
+\newpage
 \section{DB Design}
 \subsection{ER Diagram}
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=15cm]{ER.png}
+    \includegraphics[width=\textwidth, angle = 270]{ER.png}
     \caption{ER diagram}
 \end{figure}
 \newpage
@@ -131,3 +132,117 @@ The \textbf{Admin} entity (with admin ID and role) \textbf{Audits} the SOS alert
 Overall, the diagram shows how patient data, device assignment, medication management, conversation history, emergency alerts, and role-based access are all interconnected within A.U.R.A's database.
 \end{flushleft}
 \newpage
+
+\section{UI Design}
+\subsection{Patient's Dashboard}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{Picture1.png}
+    \caption[Patient Dashboard --- Screen 1]{Patient Dashboard --- Screen 1 \\ Home screen of the Patient's App, contain a camera icon to trigger the face recognition and a microphone icon to trigger the Orito bot.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture2.png}
+    \caption[Patient Dashboard --- Screen 2]{Patient Dashboard --- Screen 2 \\ A preview of the footage taken by the camera module is shown.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture3.png}
+    \caption{Patient Dashboard --- Screen 3 \\ List of the enrolled persons,their name,relation and other details.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture4.png}
+    \caption{Patient Dashboard --- Screen 4  \\ Calendar for events,medications,remainders and routines }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture5.png}
+    \caption{Patient Dashboard --- Screen 5 \\ List of remainders and events which are active,done and upcoming}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture6.png}
+    \caption{Patient Dashboard --- Screen 6 \\ Memory Bank stores details of the enrolled persons, summary of the communication with Orito bot}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture7.png}
+    \caption{Patient Dashboard --- Screen 7 \\ User( patient) Settings page with language selection, SOS contact details, notification enabling option, and user profile with sign out option }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture8.png}
+    \caption{Patient Dashboard --- Screen 8 \\ By tapping the microphone icon, Orito bot starts listens for user input}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture9.png}
+    \caption{Patient Dashboard --- Screen 9 \\ After taking the input from the user, Orito bot processes it and gives a response}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture10.png}
+    \caption{Patient Dashboard --- Screen 10  \\ The Orito bot after looking through the Memory Bank and the calendar gives a response}
+\end{figure}
+
+\subsection{Caregiver's Dashboard}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture11.png}
+    \caption{Caregiver Dashboard --- Screen 1 \\ Home screen of the Caregiver's App, which shows the live location of the patient and the caregiver, SOS alerts, number of linked patients, medication progress,Journal entries}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture12.png}
+    \caption{Caregiver Dashboard --- Screen 2 \\ Showing SOS history with small brief of the reason of the SOS and also show which patient have trigger the SOS}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture13.png}
+    \caption{Caregiver Dashboard --- Screen 3 \\ Shows the report of the caregiver with the list of patients linked to the caregiver,their daily snapshots like medication progress, journal entries, and chats with Orito bot and finally their current mood trend}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture14.png}
+    \caption{Caregiver Dashboard --- Screen 4 \\ Page for editing the selected patient's treatment plan}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture15.png}
+    \caption{Caregiver Dashboard --- Screen 5 \\ A focussed overview of everyone under the caregiver's care}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture16.png}
+    \caption{Caregiver Dashboard --- Screen 6 \\ Page for live location tracking of the patients }
+\end{figure}
+
+\subsection{Admin's Dashboard}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7.5cm]{Picture18.png}
+    \caption{Admin's Dashboard \\ Showing the number of active users(both patients and caregivers) and number of active SOS}
+\end{figure}
+
+
+
+
+
+ 
