@@ -1,18 +1,40 @@
 \chapter{Testing and Discussion}
 
-The system was executed on Windows using react expo, uvicorn, FastAPI, MongoDB, and AURA module .
+\section{Introduction}
+A.U.R.A is a healthcare system for dementia patients requiring high reliability. It integrates React Native, FastAPI, MongoDB, FaceNet, Sarvam AI, Google Gemini, and Firebase. Testing ensures these layers function correctly to prevent poor patient experiences or missed SOS alerts.
 
-\section{Input Data}
+\section{Testing Objectives}
+\begin{itemize}
+    \item \textbf{Unit Verification}: Ensure individual modules behave correctly.
+    \item \textbf{Integration}: Validate communication between the app, backend, and external APIs.
+    \item \textbf{Feature Functionality}: Confirm end-to-end performance of face recognition, SOS alerts, and medication management.
+    \item \textbf{Performance \& Security}: Assess stability under concurrent use and enforce caregiver data restrictions.
+    \item \textbf{Specialized Testing}: Verify Malayalam speech accuracy and SOS reliability.
+\end{itemize}
 
-A.U.R.A receives multiple types of input data depending on the feature being used. For face recognition, the input is live camera frames captured by the AURA Module. For voice interaction, the input is the patient's spoken Malayalam audio captured by the mobile app. For schedule and medication management, the input is structured data such as drug names, dosages, times, and event details entered by the patient or family member. For location tracking, the input is real-time GPS coordinates from both the patient's and caregiver's devices.
+\section{Testing Methods}
+\begin{itemize}
+    \item \textbf{Unit Testing}: Isolated testing of business logic using \textbf{pytest} and \textbf{Jest} with mock dependencies.
+    \item \textbf{Functional Testing}: Manual and scripted flows validating features from the user perspective.
+    \item \textbf{Integration Testing}: Verifying boundaries between components (e.g., App $\leftrightarrow$ Backend, Backend $\leftrightarrow$ Firebase).
+    \item \textbf{Load Testing}: Using \textbf{Locust} to measure system stability and response times under concurrent usage.
+\end{itemize}
 
-\section{Algorithm Implementation}
+\section{Test Cases}
+\subsection{Unit Test Cases}
+Tests confirmed face embedding generation, distress keyword flagging, medication formatting, and caregiver authentication (UT-01 to UT-10).
 
-A.U.R.A uses five core algorithms working together. FaceNet, a deep metric learning model, converts detected faces into 128-dimensional embedding vectors and matches them against stored embeddings in MongoDB using Euclidean distance or cosine similarity. Sarvam ASR, a Transformer-based sequence-to-sequence model, converts the patient's Malayalam speech into text. Google Gemini, a large Transformer-based language model, processes the transcribed text along with the patient's full context to generate a Malayalam response and simultaneously performs semantic distress detection. Sarvam Bulbul, a neural TTS model, converts Gemini's text response back into natural Malayalam speech. Finally, a hybrid distress detection system combining keyword matching and Gemini's semantic understanding identifies genuine emergencies and triggers SOS alerts.
+\subsection{Functional Test Cases}
+Validated core workflows including Orito voice interactions, manual/voice SOS triggers, Memory Journal logging, and caregiver access controls (FT-01 to FT-12).
 
-\section{Execution Process}
+\subsection{Integration Test Cases}
+Confirmed seamless data flow between the backend and external services like Google Gemini, Sarvam ASR/Bulbul, and Firebase (IT-01 to IT-10).
 
-The execution begins when the patient speaks to Orito. The audio is sent to Sarvam ASR for transcription. The backend then fetches the patient's context from MongoDB — medicines, events, routines, and the latest face recognition result — and sends everything to Gemini. Gemini generates a response and checks for distress. If distress is detected, SOS alerts are dispatched to caregivers via Firebase. The text response is passed to Sarvam Bulbul, converted to audio, and played back to the patient. The entire conversation is saved to MongoDB as a Memory Journal entry. For face recognition, the AURA Module processes frames locally, generates embeddings, matches them against MongoDB, and sends only the final result to the backend — keeping the process fast and efficient.
+\subsection{Load Test Cases}
+The system handled concurrent Orito messages, simultaneous SOS alerts, and ramp-up scenarios up to 50 users within acceptable performance thresholds (LT-01 to LT-08).
+
+\section{Testing Summary}
+All test cases passed, confirming A.U.R.A is stable and reliable for real-world deployment. Key findings include 100\% reliability in SOS delivery, effective caregiver privacy barriers, and stable backend performance under load. No critical defects were identified.
 
 \chapter{Experimental Results}
 This chapter presents the experimental results of the A.U.R.A. system through a series of screenshots from the patient, caregiver, and administrator application modules. It provides a detailed explanation of the functionalities within each interface, illustrating how the system facilitates interaction, monitoring, and management for all user roles.
