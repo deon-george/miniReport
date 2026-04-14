@@ -44,6 +44,7 @@ Every exchange --- the patient's message and Orito's response --- is automatical
     \includegraphics[width=7.5cm]{Picture10.png}
     \caption{Orito --- Conversational AI Assistant Module  \\ The Orito bot after looking through the Memory Bank and the calendar gives a response}
 \end{figure}
+\newpage
 \subsection{Medication and Event Management Module}
 The medication and event management module allows the patient's medication schedule and daily events to be stored, managed, and accessed through natural voice conversation with Orito. Medications are added by entering the drug name, dosage, frequency, and scheduled time. Events such as doctor appointments, family visits, and daily routines are added with their associated date and time. Both can be added manually through the app interface or by telling Orito directly in Malayalam, in which case Gemini's Named Entity Recognition capability extracts the structured details from the natural language input and saves them to MongoDB through the backend API.
 
@@ -53,6 +54,7 @@ Once stored, the patient can ask Orito at any time about their medicines or sche
     \includegraphics[width=7.5cm]{Picture5.png}
     \caption{Medication and Event Management Module \\ List of remainders and events which are active,done and upcoming}
 \end{figure}
+\newpage
 \subsection{SOS Alert Module}
 The SOS alert module provides two parallel mechanisms for the patient to summon help in an emergency. The first is voice-triggered: if the patient says anything to Orito that indicates distress --- such as reporting a fall, feeling severely unwell, or explicitly asking to send an SOS --- Gemini's distress detection layer identifies the emergency and the backend immediately dispatches push notifications to all registered caregivers through Firebase Cloud Messaging. The second is a manual SOS button, prominently displayed in the patient's app interface, which triggers the same alert flow instantly when pressed. This dual mechanism ensures that both patients who can speak and those who cannot are covered.
 
@@ -65,6 +67,7 @@ The location tracking module provides real-time GPS visibility in both direction
     \includegraphics[width=7.5cm]{Picture16.png}
     \caption{Bidirectional Location Tracking Module \\ Page for live location tracking of the patients }
 \end{figure}
+\newpage
 \subsection{Authentication and Caregiver Access Module}
 Patient authentication is handled through a custom username and password system managed by the FastAPI backend. On first login, the app presents an onboarding cognitive assessment, a series of questions about the patient's current memory and cognitive condition. Based on the results, the app automatically adjusts its interface --- larger text, simplified navigation, and a gentler tone from Orito --- to match the patient's cognitive level.
 
